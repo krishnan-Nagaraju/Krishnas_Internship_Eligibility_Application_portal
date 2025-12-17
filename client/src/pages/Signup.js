@@ -1,7 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 
-const BACKEND_URL = "https://krishnas-internship-eligibility-app.vercel.app";
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
 
 function Signup() {
   const [name, setName] = useState("");

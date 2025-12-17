@@ -1,16 +1,22 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
+
+const connectDB = require("./config/db");
 
 const app = express();
 
 // =====================
-// ✅ CORS CONFIG (FIXED)
+// ✅ CONNECT DATABASE (SERVERLESS SAFE)
+// =====================
+connectDB();
+
+// =====================
+// ✅ CORS CONFIG
 // =====================
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "*", // IMPORTANT for Vercel
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
@@ -30,16 +36,9 @@ app.use("/api/internships", require("./routes/internshipRoutes"));
 app.use("/api/applications", require("./routes/applicationRoutes"));
 
 // =====================
-// ✅ DATABASE CONNECTION
-// =====================
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB Connected"))
-  .catch((err) => console.error("MongoDB connection error:", err));
-
-// =====================
 // ✅ SERVER START
 // =====================
-
-
-
+const PORT = process.env.PORT || 5001;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
