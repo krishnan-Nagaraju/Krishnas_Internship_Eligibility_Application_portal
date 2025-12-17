@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 const BACKEND_URL = "https://krishnas-internship-eligibility-app.vercel.app";
 
+
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,10 +13,11 @@ function Login() {
   const login = async () => {
     try {
       const res = await axios.post(
-        `${BACKEND_URL}/api/auth/login`,
-        { email, password },
-        { headers: { "Content-Type": "application/json" } }
-      );
+  `${BACKEND_URL}/api/auth/login`,
+  { email, password },
+  { headers: { "Content-Type": "application/json" } }
+);
+
 
       localStorage.setItem("token", res.data.token);
       window.location.assign("/internships");
