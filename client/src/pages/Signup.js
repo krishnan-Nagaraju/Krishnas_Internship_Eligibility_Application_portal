@@ -1,12 +1,16 @@
 import { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
+// 🔴 REPLACE with your real Render backend URL
+const BACKEND_URL = "https://internship-portal-backend.onrender.com";
 
 function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const Signup = async () => {
+  const handleSignup = async () => {
     if (!name || !email || !password) {
       alert("All fields are required");
       return;
@@ -14,13 +18,13 @@ function Signup() {
 
     try {
       await axios.post(
-        "krishnas-internship-eligibility-app.vercel.app/api/auth/register",
+        `${BACKEND_URL}/api/auth/register`,
         { name, email, password },
         { headers: { "Content-Type": "application/json" } }
       );
 
       alert("Registration successful! Please login.");
-      window.location.href = "/";
+      window.location.assign("/");
     } catch (err) {
       alert(err.response?.data?.message || "Signup failed");
     }
@@ -52,13 +56,15 @@ function Signup() {
         style={styles.input}
       />
 
-      <button onClick={Signup} style={styles.button}>
+      <button onClick={handleSignup} style={styles.button}>
         Register
       </button>
 
       <p style={{ marginTop: "10px" }}>
         Already have an account?{" "}
-        <a href="/" style={{ color: "#0d6efd" }}>Login</a>
+        <Link to="/" style={{ color: "#0d6efd" }}>
+          Login
+        </Link>
       </p>
     </div>
   );
