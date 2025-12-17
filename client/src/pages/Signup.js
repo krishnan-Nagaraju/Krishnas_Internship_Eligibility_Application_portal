@@ -1,31 +1,41 @@
 import { useState } from "react";
 import axios from "axios";
 
-// 🔴 IMPORTANT: Replace this with your REAL Render backend URL
-const BACKEND_URL = "krishnas-internship-eligibility-app.vercel.app";
-
-function Login() {
+function Signup() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const login = async () => {
+  const signup = async () => {
+    if (!name || !email || !password) {
+      alert("All fields are required");
+      return;
+    }
+
     try {
-      const res = await axios.post(
-        `${BACKEND_URL}/api/auth/login`,
-        { email, password },
+      await axios.post(
+        "krishnas-internship-eligibility-app.vercel.app/api/auth/register",
+        { name, email, password },
         { headers: { "Content-Type": "application/json" } }
       );
 
-      localStorage.setItem("token", res.data.token);
-      window.location.href = "/internships";
+      alert("Registration successful! Please login.");
+      window.location.href = "/";
     } catch (err) {
-      alert("Invalid credentials");
+      alert(err.response?.data?.message || "Signup failed");
     }
   };
 
   return (
     <div style={styles.box}>
-      <h2>Login</h2>
+      <h2>Sign Up</h2>
+
+      <input
+        placeholder="Name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        style={styles.input}
+      />
 
       <input
         placeholder="Email"
@@ -42,18 +52,13 @@ function Login() {
         style={styles.input}
       />
 
-      <button onClick={login} style={styles.button}>
-        Login
+      <button onClick={signup} style={styles.button}>
+        Register
       </button>
 
       <p style={{ marginTop: "10px" }}>
-        Don’t have an account?{" "}
-        <a
-          href="https://krishnas-internship-eligibility-app-gamma.vercel.app/signup"
-          style={{ color: "#0d6efd" }}
-        >
-          Sign up
-        </a>
+        Already have an account?{" "}
+        <a href="/" style={{ color: "#0d6efd" }}>Login</a>
       </p>
     </div>
   );
@@ -62,7 +67,7 @@ function Login() {
 const styles = {
   box: {
     width: "320px",
-    margin: "120px auto",
+    margin: "100px auto",
     background: "white",
     padding: "25px",
     borderRadius: "8px",
@@ -84,4 +89,4 @@ const styles = {
   },
 };
 
-export default Login;
+export default Signup;
