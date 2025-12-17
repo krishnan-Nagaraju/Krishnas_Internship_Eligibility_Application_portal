@@ -50,7 +50,7 @@ function Login() {
       <p style={{ marginTop: "10px" }}>
         Don’t have an account?{" "}
         {/* <a
-          href="https://krishnas-internship-eligibility-app-gamma.vercel.app/signup"
+          href="https://krishnas-internship-eligibility-app-gamma.vercel.app/Signup"
           style={{ color: "#0d6efd" }}
         >
           Sign up

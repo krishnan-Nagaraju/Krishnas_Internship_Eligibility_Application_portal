@@ -6,7 +6,7 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const signup = async () => {
+  const Signup = async () => {
     if (!name || !email || !password) {
       alert("All fields are required");
       return;
@@ -52,7 +52,7 @@ function Signup() {
         style={styles.input}
       />
 
-      <button onClick={signup} style={styles.button}>
+      <button onClick={Signup} style={styles.button}>
         Register
       </button>
 
