@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-// 🔴 REPLACE WITH YOUR REAL RENDER BACKEND URL
+
 const BACKEND_URL = "https://krishnas-internship-eligibility-app.vercel.app";
 
 function Login() {
