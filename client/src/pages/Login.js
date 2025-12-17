@@ -1,7 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
-// 🔴 IMPORTANT: Replace this with your REAL Render backend URL
+
 const BACKEND_URL = "krishnas-internship-eligibility-app.vercel.app";
 
 function Login() {
@@ -48,12 +49,13 @@ function Login() {
 
       <p style={{ marginTop: "10px" }}>
         Don’t have an account?{" "}
-        <a
+        {/* <a
           href="https://krishnas-internship-eligibility-app-gamma.vercel.app/signup"
           style={{ color: "#0d6efd" }}
         >
           Sign up
-        </a>
+        </a> */}
+      <Link to="/signup">Sign up</Link>
       </p>
     </div>
   );
