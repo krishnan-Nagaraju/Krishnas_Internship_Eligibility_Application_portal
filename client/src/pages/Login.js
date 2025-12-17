@@ -49,9 +49,7 @@ function Login() {
 
       <p style={{ marginTop: "10px" }}>
         Don’t have an account?{" "}
-        <Link to="/signup" style={{ color: "#0d6efd" }}>
-          Sign up
-        </Link>
+       <Link to="/signup">Sign up</Link>
       </p>
     </div>
   );
