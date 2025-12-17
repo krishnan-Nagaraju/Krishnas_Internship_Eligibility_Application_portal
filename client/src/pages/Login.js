@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 // 🔴 REPLACE WITH YOUR REAL RENDER BACKEND URL
-const BACKEND_URL = "https://internship-portal-backend.onrender.com";
+const BACKEND_URL = "https://krishnas-internship-eligibility-app.vercel.app";
 
 function Login() {
   const [email, setEmail] = useState("");
