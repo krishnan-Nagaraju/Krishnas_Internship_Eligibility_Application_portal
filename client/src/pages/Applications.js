@@ -6,7 +6,7 @@ function Applications() {
   const [apps, setApps] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5001/api/applications/my-applications", {
+    axios.get("krishnas-internship-eligibility-app.vercel.app/api/applications/my-applications", {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
     }).then(res => setApps(res.data));
   }, []);

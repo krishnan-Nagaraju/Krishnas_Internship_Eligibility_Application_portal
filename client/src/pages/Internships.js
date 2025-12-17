@@ -6,14 +6,14 @@ function Internships() {
   const [internships, setInternships] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5001/api/internships/eligible", {
+    axios.get("krishnas-internship-eligibility-app.vercel.app/api/internships/eligible", {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
     }).then(res => setInternships(res.data));
   }, []);
 
   const apply = async (id) => {
     await axios.post(
-      "http://localhost:5001/api/applications/apply",
+      "krishnas-internship-eligibility-app.vercel.app/api/applications/apply",
       { internshipId: id },
       { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
     );

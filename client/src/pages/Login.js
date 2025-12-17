@@ -8,7 +8,7 @@ function Login() {
   const login = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:5001/api/auth/login",
+        "krishnas-internship-eligibility-app.vercel.app/api/auth/login",
         { email, password },
         { headers: { "Content-Type": "application/json" } }
       );
