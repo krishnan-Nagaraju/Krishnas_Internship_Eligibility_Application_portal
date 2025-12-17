@@ -2,8 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-
-const BACKEND_URL = "krishnas-internship-eligibility-app.vercel.app";
+// 🔴 REPLACE WITH YOUR REAL RENDER BACKEND URL
+const BACKEND_URL = "https://internship-portal-backend.onrender.com";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -18,7 +18,7 @@ function Login() {
       );
 
       localStorage.setItem("token", res.data.token);
-      window.location.href = "/internships";
+      window.location.assign("/internships");
     } catch (err) {
       alert("Invalid credentials");
     }
@@ -49,13 +49,9 @@ function Login() {
 
       <p style={{ marginTop: "10px" }}>
         Don’t have an account?{" "}
-        {/* <a
-          href="https://krishnas-internship-eligibility-app-gamma.vercel.app/Signup"
-          style={{ color: "#0d6efd" }}
-        >
+        <Link to="/signup" style={{ color: "#0d6efd" }}>
           Sign up
-        </a> */}
-      <Link to="/signup">Sign up</Link>
+        </Link>
       </p>
     </div>
   );
